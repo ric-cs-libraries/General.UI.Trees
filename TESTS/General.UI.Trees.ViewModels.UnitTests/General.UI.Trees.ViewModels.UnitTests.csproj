@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<ProjectReference Include="../../_SRC/General.UI.Trees.ViewModels/General.UI.Trees.ViewModels.csproj" />
+	</ItemGroup>
+
+</Project>

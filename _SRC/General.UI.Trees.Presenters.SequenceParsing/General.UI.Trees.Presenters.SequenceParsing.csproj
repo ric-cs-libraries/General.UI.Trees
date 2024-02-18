@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+
+		<MyPackageMajorVersion>$(MyGeneralUITreesPresentersSequenceParsing_MajorVersion)</MyPackageMajorVersion>
+		<MyPackageMinorVersion>0</MyPackageMinorVersion>
+		<MyPackagePatchVersion>0</MyPackagePatchVersion>
+
+		<Description><!-- Mettre ici en 1 ligne (même longue), le descriptif des nouveautés, pour cette nouvelle version du Package Nuget -->
+		</Description>
+
+	</PropertyGroup>
+
+	<Import Project="$(MyCommonCsProjSrcPath)/SetVersions.csproj" /><!-- Affectation de <PackageVersion> et <Version> -->
+
+	<ItemGroup>
+		<!-- <PackageReference Include="General.Basics" Version="$(MyGeneralBasics_MajorVersion).$(MyDependenciesVersionWildcard)"/> -->
+		<PackageReference Include="General.SequenceParsing" Version="$(MyGeneralSequenceParsing_MajorVersion).$(MyDependenciesVersionWildcard)" />
+		<PackageReference Include="General.UI.Trees.ViewModels" Version="$(MyGeneralUITreesViewModels_MajorVersion).$(MyDependenciesVersionWildcard)" />
+	</ItemGroup>
+
+</Project>
