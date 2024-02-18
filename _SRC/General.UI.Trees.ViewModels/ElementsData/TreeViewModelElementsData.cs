@@ -2,7 +2,10 @@
 
 public record TreeViewModelElementsData
 {
-    public string Id { get; init; }
+    public string Id { get; init; } = null!;
+
+    public string Label { get; init; } = null!;
+
     public int Depth { get; init; }
 
     public Dictionary<string, string> StringInfos { get; init; } = null!;
