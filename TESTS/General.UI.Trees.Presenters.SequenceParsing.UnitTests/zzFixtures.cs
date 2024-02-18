@@ -1,9 +1,9 @@
-﻿using General.Basics.Trees.GenericTree;
+﻿using General.SequenceParsing.Generic;
 using General.SequenceParsing.Char;
-using General.SequenceParsing.Generic;
+
 using General.UI.Trees.Presenters.SequenceParsing.Interfaces;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using General.UI.Trees.ViewModels.ElementsData;
+
 
 namespace General.UI.Trees.Presenters.SequenceParsing.UnitTests;
 
@@ -87,12 +87,5 @@ internal static class Fixtures
             };
             return result;
         }
-    }
-    internal record TreeViewModelElementsData
-    {
-        public string Text { get; set; } = null!;
-        public string? Hint { get; set; }
-
-        public int Depth { get; set; }
     }
 }
