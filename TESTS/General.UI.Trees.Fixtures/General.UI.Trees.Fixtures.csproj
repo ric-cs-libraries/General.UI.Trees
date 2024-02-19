@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<ProjectReference Include="../../_SRC/General.UI.Trees.Presenters.SequenceParsing/General.UI.Trees.Presenters.SequenceParsing.csproj" />
+	</ItemGroup>
+
+</Project>
