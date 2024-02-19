@@ -2,6 +2,9 @@
 
 using General.SequenceParsing.Generic;
 
+
+using General.UI.Trees.Fixtures;
+
 using General.UI.Trees.ViewModels;
 using General.UI.Trees.ViewModels.ElementsData;
 using General.UI.Trees.Presenters.SequenceParsing.Interfaces;
@@ -22,85 +25,111 @@ public class TreeViewModelPresenterFromParseResultTests
         var treeTitle = "Essai1";
         TreeViewModelPresenterFromParseResult<TreeViewModelElementsData> presenter = new(toDataConverter, treeTitle);
 
-        General.Basics.Trees.GenericTree.TreeElement<TreeViewModelElementsData> element;
-        General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData> rootParentElement, parentElement, parentElement2;
+        General.Basics.Trees.GenericTree.TreeElement<TreeViewModelElementsData> treeElement;
+        General.Basics.Trees.GenericTree.GenericTree<TreeViewModelElementsData> treeRootNode;
+        General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData> treeNode, parentElement, parentElement2;
+
 
         //--- Act ---
         TreeViewModel<TreeViewModelElementsData> result = presenter.GetViewModel(parseResult);
 
         //--- Assert ---
-        rootParentElement = result.Tree;
-        Assert.IsType<General.Basics.Trees.GenericTree.GenericTree<TreeViewModelElementsData>>(rootParentElement);
-        Assert.Equal(-1, rootParentElement.Data!.Depth);
-        Assert.Equal($"(5) : {treeTitle}", rootParentElement.Data!.Text);
-        Assert.Equal($"nbChildren=5; id='0'; descr='{treeTitle}'", rootParentElement.Data!.Hint);
+        treeRootNode = result.Tree;
+        Assert.IsType<General.Basics.Trees.GenericTree.GenericTree<TreeViewModelElementsData>>(treeRootNode);
+        Assert.Equal(-1, treeRootNode.Data!.Depth);
+        Assert.Equal(0, treeRootNode.Id);
+        Assert.Equal($"{treeTitle}", treeRootNode.Data!.Label);
+        Assert.Equal(5, treeRootNode.NbChildren);
         {
 
-            element = rootParentElement.GetChildByIndex(0);
-            Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-            Assert.Equal(0, element.Data!.Depth);
-            Assert.Equal($"Data(3)='xyz'", element.Data!.Text);
-            Assert.Equal($"id='1'; parentId='0'; indexInParent=0; descr='Data(3)='xyz''", element.Data!.Hint);
+            treeElement = treeRootNode.GetChildByIndex(0);
+            Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+            Assert.Equal(0, treeElement.Data!.Depth);
+            Assert.Equal(1, treeElement.Id);
+            Assert.Equal(0, treeElement.ParentId);
+            Assert.Equal($"Data(3)='xyz'", treeElement.Data!.Label);
+            Assert.Equal(0, treeElement.IndexInParent);
 
-            element = rootParentElement.GetChildByIndex(1);
-            Assert.IsType<General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>>(element);
-            Assert.Equal(0, element.Data!.Depth);
-            Assert.Equal($"(1) :  StartDelim(2)=`AA`; EndDelim(3)=`AAF`", element.Data!.Text);
-            Assert.Equal($"nbChildren=1; id='2'; parentId='0'; indexInParent=1; descr=' StartDelim(2)=`AA`; EndDelim(3)=`AAF`'", element.Data!.Hint);
+            treeNode = (treeRootNode.GetChildByIndex(1) as General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>)!;
+            Assert.IsType<General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>>(treeNode);
+            Assert.Equal(0, treeNode.Data!.Depth);
+            Assert.Equal(2, treeNode.Id);
+            Assert.Equal(0, treeNode.ParentId);
+            Assert.Equal($" StartDelim(2)=`AA`; EndDelim(3)=`AAF`", treeNode.Data!.Label);
+            Assert.Equal(1, treeNode.IndexInParent);
+            Assert.Equal(1, treeNode.NbChildren);
             {
 
-                parentElement = (element as General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>)!;
-                element = parentElement.GetChildByIndex(0);
-                Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-                Assert.Equal(1, element.Data!.Depth);
-                Assert.Equal($"Data(3)='wkt'", element.Data!.Text);
-                Assert.Equal($"id='3'; parentId='2'; indexInParent=0; descr='Data(3)='wkt''", element.Data!.Hint);
+                parentElement = treeNode;
+                treeElement = parentElement.GetChildByIndex(0);
+                Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+                Assert.Equal(1, treeElement.Data!.Depth);
+                Assert.Equal(3, treeElement.Id);
+                Assert.Equal(2, treeElement.ParentId);
+                Assert.Equal($"Data(3)='wkt'", treeElement.Data!.Label);
+                Assert.Equal(0, treeElement.IndexInParent);
             }
 
-            element = rootParentElement.GetChildByIndex(2);
-            Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-            Assert.Equal(0, element.Data!.Depth);
-            Assert.Equal($"Data(2)='bz'", element.Data!.Text);
-            Assert.Equal($"id='4'; parentId='0'; indexInParent=2; descr='Data(2)='bz''", element.Data!.Hint);
+            treeElement = treeRootNode.GetChildByIndex(2);
+            Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+            Assert.Equal(0, treeElement.Data!.Depth);
+            Assert.Equal(4, treeElement.Id);
+            Assert.Equal(0, treeElement.ParentId);
+            Assert.Equal($"Data(2)='bz'", treeElement.Data!.Label);
+            Assert.Equal(2, treeElement.IndexInParent);
 
-            element = rootParentElement.GetChildByIndex(3);
-            Assert.IsType<General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>>(element);
-            Assert.Equal(0, element.Data!.Depth);
-            Assert.Equal($"(3) :  StartDelim(2)=`BB`; EndDelim(3)=`BBF`", element.Data!.Text);
-            Assert.Equal($"nbChildren=3; id='5'; parentId='0'; indexInParent=3; descr=' StartDelim(2)=`BB`; EndDelim(3)=`BBF`'", element.Data!.Hint);
+            treeNode = (treeRootNode.GetChildByIndex(3) as General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>)!;
+            Assert.IsType<General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>>(treeNode);
+            Assert.Equal(0, treeNode.Data!.Depth);
+            Assert.Equal(5, treeNode.Id);
+            Assert.Equal(0, treeNode.ParentId);
+            Assert.Equal($" StartDelim(2)=`BB`; EndDelim(3)=`BBF`", treeNode.Data!.Label);
+            Assert.Equal(3, treeNode.IndexInParent);
+            Assert.Equal(3, treeNode.NbChildren);
             {
-                parentElement = (element as General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>)!;
-                element = parentElement.GetChildByIndex(0);
-                Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-                Assert.Equal(1, element.Data!.Depth);
-                Assert.Equal($"Data(2)='ej'", element.Data!.Text);
-                Assert.Equal($"id='6'; parentId='5'; indexInParent=0; descr='Data(2)='ej''", element.Data!.Hint);
+                parentElement = treeNode;
+                treeElement = parentElement.GetChildByIndex(0);
+                Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+                Assert.Equal(1, treeElement.Data!.Depth);
+                Assert.Equal(6, treeElement.Id);
+                Assert.Equal(5, treeElement.ParentId);
+                Assert.Equal($"Data(2)='ej'", treeElement.Data!.Label);
+                Assert.Equal(0, treeElement.IndexInParent);
 
-                element = parentElement.GetChildByIndex(1);
-                Assert.IsType<General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>>(element);
-                Assert.Equal(1, element.Data!.Depth);
-                Assert.Equal($"(1) :  StartDelim(2)=`AA`; EndDelim(3)=`AAF`", element.Data!.Text);
-                Assert.Equal($"nbChildren=1; id='7'; parentId='5'; indexInParent=1; descr=' StartDelim(2)=`AA`; EndDelim(3)=`AAF`'", element.Data!.Hint);
+                treeNode = (parentElement.GetChildByIndex(1) as General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>)!;
+                Assert.IsType<General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>>(treeNode);
+                Assert.Equal(1, treeNode.Data!.Depth);
+                Assert.Equal(7, treeNode.Id);
+                Assert.Equal(5, treeNode.ParentId);
+                Assert.Equal($" StartDelim(2)=`AA`; EndDelim(3)=`AAF`", treeNode.Data!.Label);
+                Assert.Equal(1, treeNode.IndexInParent);
+                Assert.Equal(1, treeNode.NbChildren);
                 {
-                    parentElement2 = (element as General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData>)!;
-                    element = parentElement2.GetChildByIndex(0);
-                    Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-                    Assert.Equal(2, element.Data!.Depth);
-                    Assert.Equal($"Data(3)='123'", element.Data!.Text);
-                    Assert.Equal($"id='8'; parentId='7'; indexInParent=0; descr='Data(3)='123''", element.Data!.Hint);
+                    parentElement2 = treeNode;
+                    treeElement = parentElement2.GetChildByIndex(0);
+                    Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+                    Assert.Equal(2, treeElement.Data!.Depth);
+                    Assert.Equal(8, treeElement.Id);
+                    Assert.Equal(7, treeElement.ParentId);
+                    Assert.Equal($"Data(3)='123'", treeElement.Data!.Label);
+                    Assert.Equal(0, treeElement.IndexInParent);
                 }
-                element = parentElement.GetChildByIndex(2);
-                Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-                Assert.Equal(1, element.Data!.Depth);
-                Assert.Equal($"Data(3)='567'", element.Data!.Text);
-                Assert.Equal($"id='9'; parentId='5'; indexInParent=2; descr='Data(3)='567''", element.Data!.Hint);
+                treeElement = parentElement.GetChildByIndex(2);
+                Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+                Assert.Equal(1, treeElement.Data!.Depth);
+                Assert.Equal(9, treeElement.Id);
+                Assert.Equal(5, treeElement.ParentId);
+                Assert.Equal($"Data(3)='567'", treeElement.Data!.Label);
+                Assert.Equal(2, treeElement.IndexInParent);
             }
 
-            element = rootParentElement.GetChildByIndex(4);
-            Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(element);
-            Assert.Equal(0, element.Data!.Depth);
-            Assert.Equal($"Data(4)='rien'", element.Data!.Text);
-            Assert.Equal($"id='10'; parentId='0'; indexInParent=4; descr='Data(4)='rien''", element.Data!.Hint);
+            treeElement = treeRootNode.GetChildByIndex(4);
+            Assert.IsType<General.Basics.Trees.GenericTree.Leaf<TreeViewModelElementsData>>(treeElement);
+            Assert.Equal(0, treeElement.Data!.Depth);
+            Assert.Equal(10, treeElement.Id);
+            Assert.Equal(0, treeElement.ParentId);
+            Assert.Equal($"Data(4)='rien'", treeElement.Data!.Label);
+            Assert.Equal(4, treeElement.IndexInParent);
         }
     }
 }

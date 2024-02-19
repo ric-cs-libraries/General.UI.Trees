@@ -2,6 +2,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="../../_SRC/General.UI.Trees.Presenters.SequenceParsing/General.UI.Trees.Presenters.SequenceParsing.csproj" />
+		<ProjectReference Include="..\General.UI.Trees.Fixtures\General.UI.Trees.Fixtures.csproj" />
 	</ItemGroup>
 
 </Project>
