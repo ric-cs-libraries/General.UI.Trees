@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System.Text;
+using Xunit;
 
 using General.SequenceParsing.Generic;
 
@@ -13,7 +14,6 @@ using General.UI.Trees.Presenters.SequenceParsing;
 using General.UI.Trees.Views.HTML.Basic.Stylers;
 using General.UI.Trees.Views.HTML.Basic.DescriptionsMakers;
 using General.UI.Trees.Views.HTML.Basic.HintsMakers;
-using System.Text;
 
 namespace General.UI.Trees.Views.HTML.Basic.IntegrationTests;
 
