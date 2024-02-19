@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<ProjectReference Include="../../_SRC/General.UI.Trees.Views.HTML/General.UI.Trees.Views.HTML.csproj" />
+		<ProjectReference Include="..\General.UI.Trees.Fixtures\General.UI.Trees.Fixtures.csproj" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<IntegrationTestsPath>$(SolutionDir)\TESTS\General.UI.Trees.Views.HTML.IntegrationTests</IntegrationTestsPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<Content Include="$(IntegrationTestsPath)\.Assets\**" CopyToOutputDirectory="PreserveNewest">
+			<Link>._Assets/%(RecursiveDir)%(Filename)%(Extension)</Link>
+		</Content>
+
+	</ItemGroup>
+
+</Project>

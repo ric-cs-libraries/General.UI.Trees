@@ -1,0 +1,24 @@
+<HEAD><META http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/><STYLE>.root-node {width:60%;}
+.root-node-description {font-weight:bold;text-decoration:underline;font-size:2.5em;margin-bottom:10px;}
+.node {margin-bottom:10px;border:dotted 2px pink;}
+.leaf {font-style:italic;margin-bottom:6px;}
+.node-prefix {font-weight:bold;font-size:1.5rem;color:pink;}
+.leaf-prefix {font-size:0.7rem;color:gray;}
+.node-collapser {font-weight:bold;font-size:1.5rem;}
+.node-description {text-decoration:underline;font-weight:bold;}
+</STYLE><SCRIPT>    window.handleNodeCollapse = (nodeTag) => {
+        let nodeCollapseTag = nodeTag.firstChild.childNodes[1];
+        let childrenDisplay;
+        if (nodeTag.getAttribute("collapsed") !== null){
+            childrenDisplay = 'block';
+            nodeTag.removeAttribute("collapsed");
+            nodeCollapseTag.innerHTML = "-";
+        } else {
+            childrenDisplay = "none";
+            nodeTag.setAttribute("collapsed", "1");
+            nodeCollapseTag.innerHTML = "+";
+        }
+        for(let i = 1; i < nodeTag.childNodes.length; i++){
+            nodeTag.childNodes[i].style.display = childrenDisplay;
+        }
+    };</SCRIPT></HEAD><BODY><DIV title="nbChildren=5; id='0'; descr='Essai1'" id="0" class="root-node"><DIV class="root-node-description" onclick="var nodeTag = window.document.getElementById('0'); window.handleNodeCollapse(nodeTag);"><SPAN class="node-prefix">/ </SPAN><SPAN class="node-collapser">-</SPAN>   (5) : Essai1</DIV><DIV title="id='1'; parentNodeId='0'; indexInParent=0; descr='Data(3)='xyz''" id="1" parentNodeId="0" indexInParent="0" style="margin-left:15px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(3)=&#39;xyz&#39;</DIV><DIV title="nbChildren=1; id='2'; parentNodeId='0'; indexInParent=1 ; descr=' StartDelim(2)=`AA`; EndDelim(3)=`AAF`'" id="2" parentNodeId="0" indexInParent="1" style="margin-left:15px;" class="node"><DIV class="node-description" onclick="var nodeTag = window.document.getElementById('2'); window.handleNodeCollapse(nodeTag);"><SPAN class="node-prefix">/ </SPAN><SPAN class="node-collapser">-</SPAN>   (1) :  StartDelim(2)=`AA`; EndDelim(3)=`AAF`</DIV><DIV title="id='3'; parentNodeId='2'; indexInParent=0; descr='Data(3)='wkt''" id="3" parentNodeId="2" indexInParent="0" style="margin-left:30px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(3)=&#39;wkt&#39;</DIV></DIV><DIV title="id='4'; parentNodeId='0'; indexInParent=2; descr='Data(2)='bz''" id="4" parentNodeId="0" indexInParent="2" style="margin-left:15px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(2)=&#39;bz&#39;</DIV><DIV title="nbChildren=3; id='5'; parentNodeId='0'; indexInParent=3 ; descr=' StartDelim(2)=`BB`; EndDelim(3)=`BBF`'" id="5" parentNodeId="0" indexInParent="3" style="margin-left:15px;" class="node"><DIV class="node-description" onclick="var nodeTag = window.document.getElementById('5'); window.handleNodeCollapse(nodeTag);"><SPAN class="node-prefix">/ </SPAN><SPAN class="node-collapser">-</SPAN>   (3) :  StartDelim(2)=`BB`; EndDelim(3)=`BBF`</DIV><DIV title="id='6'; parentNodeId='5'; indexInParent=0; descr='Data(2)='ej''" id="6" parentNodeId="5" indexInParent="0" style="margin-left:30px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(2)=&#39;ej&#39;</DIV><DIV title="nbChildren=1; id='7'; parentNodeId='5'; indexInParent=1 ; descr=' StartDelim(2)=`AA`; EndDelim(3)=`AAF`'" id="7" parentNodeId="5" indexInParent="1" style="margin-left:30px;" class="node"><DIV class="node-description" onclick="var nodeTag = window.document.getElementById('7'); window.handleNodeCollapse(nodeTag);"><SPAN class="node-prefix">/ </SPAN><SPAN class="node-collapser">-</SPAN>   (1) :  StartDelim(2)=`AA`; EndDelim(3)=`AAF`</DIV><DIV title="id='8'; parentNodeId='7'; indexInParent=0; descr='Data(3)='123''" id="8" parentNodeId="7" indexInParent="0" style="margin-left:45px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(3)=&#39;123&#39;</DIV></DIV><DIV title="id='9'; parentNodeId='5'; indexInParent=2; descr='Data(3)='567''" id="9" parentNodeId="5" indexInParent="2" style="margin-left:30px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(3)=&#39;567&#39;</DIV></DIV><DIV title="id='10'; parentNodeId='0'; indexInParent=4; descr='Data(4)='rien''" id="10" parentNodeId="0" indexInParent="4" style="margin-left:15px;" class="leaf"><SPAN class="leaf-prefix">* </SPAN>Data(4)=&#39;rien&#39;</DIV></DIV></BODY>

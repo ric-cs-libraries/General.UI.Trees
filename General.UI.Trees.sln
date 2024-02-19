@@ -5,23 +5,26 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTS", "TESTS", "{EBB734BF-2E49-4A1E-AF14-05BF26D00083}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.UI.Trees.Presenters.SequenceParsing.UnitTests", "TESTS\General.UI.Trees.Presenters.SequenceParsing.UnitTests\General.UI.Trees.Presenters.SequenceParsing.UnitTests.csproj", "{1A5ECBD1-E58D-4843-B503-EE5B53F82B6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.Presenters.SequenceParsing.UnitTests", "TESTS\General.UI.Trees.Presenters.SequenceParsing.UnitTests\General.UI.Trees.Presenters.SequenceParsing.UnitTests.csproj", "{1A5ECBD1-E58D-4843-B503-EE5B53F82B6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.UI.Trees.ViewModels.UnitTests", "TESTS\General.UI.Trees.ViewModels.UnitTests\General.UI.Trees.ViewModels.UnitTests.csproj", "{91B5EB17-8843-4685-9C1F-CE1762C974F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.ViewModels.UnitTests", "TESTS\General.UI.Trees.ViewModels.UnitTests\General.UI.Trees.ViewModels.UnitTests.csproj", "{91B5EB17-8843-4685-9C1F-CE1762C974F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_SRC", "_SRC", "{1DF44866-E9B6-4AA8-8E86-9CEEB2914F96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.UI.Trees.Presenters.SequenceParsing", "_SRC\General.UI.Trees.Presenters.SequenceParsing\General.UI.Trees.Presenters.SequenceParsing.csproj", "{BBBFF1B4-7206-4ADB-8974-C88566E882F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.Presenters.SequenceParsing", "_SRC\General.UI.Trees.Presenters.SequenceParsing\General.UI.Trees.Presenters.SequenceParsing.csproj", "{BBBFF1B4-7206-4ADB-8974-C88566E882F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.UI.Trees.ViewModels", "_SRC\General.UI.Trees.ViewModels\General.UI.Trees.ViewModels.csproj", "{00E02737-CB1A-4553-ADEF-A469D3977CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.ViewModels", "_SRC\General.UI.Trees.ViewModels\General.UI.Trees.ViewModels.csproj", "{00E02737-CB1A-4553-ADEF-A469D3977CAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.Views.HTML.IntegrationTests", "TESTS\General.UI.Trees.Views.HTML.IntegrationTests\General.UI.Trees.Views.HTML.IntegrationTests.csproj", "{8178D4D1-BD4A-4AA7-933C-782A377374A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.Views.HTML", "_SRC\General.UI.Trees.Views.HTML\General.UI.Trees.Views.HTML.csproj", "{6085F993-0C4E-437C-BA18-B1540E46B4B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General.UI.Trees.Fixtures", "TESTS\General.UI.Trees.Fixtures\General.UI.Trees.Fixtures.csproj", "{F788BB8B-CDAD-4A5F-9A12-F8253E660779}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A5ECBD1-E58D-4843-B503-EE5B53F82B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -40,11 +43,29 @@ Global
 		{00E02737-CB1A-4553-ADEF-A469D3977CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00E02737-CB1A-4553-ADEF-A469D3977CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00E02737-CB1A-4553-ADEF-A469D3977CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8178D4D1-BD4A-4AA7-933C-782A377374A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8178D4D1-BD4A-4AA7-933C-782A377374A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8178D4D1-BD4A-4AA7-933C-782A377374A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8178D4D1-BD4A-4AA7-933C-782A377374A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6085F993-0C4E-437C-BA18-B1540E46B4B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6085F993-0C4E-437C-BA18-B1540E46B4B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6085F993-0C4E-437C-BA18-B1540E46B4B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6085F993-0C4E-437C-BA18-B1540E46B4B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F788BB8B-CDAD-4A5F-9A12-F8253E660779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F788BB8B-CDAD-4A5F-9A12-F8253E660779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F788BB8B-CDAD-4A5F-9A12-F8253E660779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F788BB8B-CDAD-4A5F-9A12-F8253E660779}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1A5ECBD1-E58D-4843-B503-EE5B53F82B6E} = {EBB734BF-2E49-4A1E-AF14-05BF26D00083}
 		{91B5EB17-8843-4685-9C1F-CE1762C974F1} = {EBB734BF-2E49-4A1E-AF14-05BF26D00083}
 		{BBBFF1B4-7206-4ADB-8974-C88566E882F1} = {1DF44866-E9B6-4AA8-8E86-9CEEB2914F96}
 		{00E02737-CB1A-4553-ADEF-A469D3977CAA} = {1DF44866-E9B6-4AA8-8E86-9CEEB2914F96}
+		{8178D4D1-BD4A-4AA7-933C-782A377374A0} = {EBB734BF-2E49-4A1E-AF14-05BF26D00083}
+		{6085F993-0C4E-437C-BA18-B1540E46B4B9} = {1DF44866-E9B6-4AA8-8E86-9CEEB2914F96}
+		{F788BB8B-CDAD-4A5F-9A12-F8253E660779} = {EBB734BF-2E49-4A1E-AF14-05BF26D00083}
 	EndGlobalSection
 EndGlobal
