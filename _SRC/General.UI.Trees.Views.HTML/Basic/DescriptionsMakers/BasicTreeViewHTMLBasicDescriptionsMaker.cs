@@ -2,22 +2,24 @@
 
 using General.UI.Trees.ViewModels.ElementsData;
 
+using General.UI.Trees.Views.HTML.Interfaces;
+
 
 namespace General.UI.Trees.Views.HTML.Basic.DescriptionsMakers;
 
-public class BasicTreeViewHTMLBasicDescriptionsMaker
+public class BasicTreeViewHTMLBasicDescriptionsMaker : ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData>
 {
-    internal string GetDescription(GenericTree<TreeViewModelElementsData> treeViewModelRootNode)
+    public string GetDescription(GenericTree<TreeViewModelElementsData> treeViewModelRootNode)
     {
         return $"({treeViewModelRootNode.NbChildren}) : {treeViewModelRootNode.Data!.Label}";
     }
 
-    internal string GetDescription(Node<TreeViewModelElementsData> treeViewModelNode)
+    public string GetDescription(Node<TreeViewModelElementsData> treeViewModelNode)
     {
         return $"({treeViewModelNode.NbChildren}) : {treeViewModelNode.Data!.Label}";
     }
 
-    internal string GetDescription(Leaf<TreeViewModelElementsData> treeViewModelLeaf)
+    public string GetDescription(Leaf<TreeViewModelElementsData> treeViewModelLeaf)
     {
         return $"{treeViewModelLeaf.Data!.Label}";
     }

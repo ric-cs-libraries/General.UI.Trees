@@ -6,7 +6,7 @@ using General.UI.HTML.Basics.Elements;
 using General.UI.HTML.Basics.Attributes;
 
 using General.Basics.Trees.GenericTree;
-
+using General.UI.Trees.Views.HTML.Interfaces;
 
 namespace General.UI.Trees.Views.HTML.Abstracts;
 
@@ -16,14 +16,14 @@ public abstract class TreeViewHTML<TTreeViewModelElementsData>
     public string ContentType { get; init; } = "text/html";
 
     private readonly TreeViewModel<TTreeViewModelElementsData> model;
-    protected readonly TreeViewHTMLStyler htmlTreeViewStyler;
+    protected readonly ITreeViewHTMLStyler htmlTreeViewStyler;
 
     private int monoIndentationNbPixels;
 
     protected TreeViewHTML
     (
         TreeViewModel<TTreeViewModelElementsData> model,
-        TreeViewHTMLStyler htmlTreeViewStyler
+        ITreeViewHTMLStyler htmlTreeViewStyler
     )
     {
         this.model = model;

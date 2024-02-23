@@ -14,6 +14,8 @@ using General.UI.Trees.Presenters.SequenceParsing;
 using General.UI.Trees.Views.HTML.Basic.Stylers;
 using General.UI.Trees.Views.HTML.Basic.DescriptionsMakers;
 using General.UI.Trees.Views.HTML.Basic.HintsMakers;
+using General.UI.Trees.Views.HTML.Interfaces;
+using General.UI.Trees.Views.HTML.Basic.Interfaces;
 
 namespace General.UI.Trees.Views.HTML.Basic.IntegrationTests;
 
@@ -34,11 +36,16 @@ public class BasicTreeViewHTMLIntegrationTests
         TreeViewModelPresenterFromParseResult<TreeViewModelElementsData> presenter = new(toDataConverter, treeTitle);
         TreeViewModel<TreeViewModelElementsData> treeViewModel = presenter.GetViewModel(parseResult);
 
-        BasicTreeViewHTMLBasicStyler basicTreeViewHTMLBasicStyler = new();
-        BasicTreeViewHTMLBasicDescriptionsMaker basicTreeViewHTMLBasicDescriptionsMaker = new();
-        BasicTreeViewHTMLBasicHintsMaker basicTreeViewHTMLBasicHintsMaker = new();
+        IBasicTreeViewHTMLStyler basicTreeViewHTMLStyler = new BasicTreeViewHTMLBasicStyler();
+        ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData> treeViewHTMLDescriptionsMaker = new BasicTreeViewHTMLBasicDescriptionsMaker();
+        ITreeViewHTMLHintsMaker<TreeViewModelElementsData> treeViewHTMLHintsMaker = new BasicTreeViewHTMLBasicHintsMaker();
 
-        BasicTreeViewHTML basicTreeViewHTML = new(treeViewModel, basicTreeViewHTMLBasicStyler, basicTreeViewHTMLBasicDescriptionsMaker, basicTreeViewHTMLBasicHintsMaker);
+        BasicTreeViewHTML basicTreeViewHTML = new(
+            treeViewModel, 
+            basicTreeViewHTMLStyler, 
+            treeViewHTMLDescriptionsMaker, 
+            treeViewHTMLHintsMaker
+        );
 
 
         //--- Act ---

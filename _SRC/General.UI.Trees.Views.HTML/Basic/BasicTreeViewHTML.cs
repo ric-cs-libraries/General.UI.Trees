@@ -8,10 +8,10 @@ using General.UI.HTML.Basics.Attributes;
 
 using General.UI.Trees.ViewModels.ElementsData;
 
+using General.UI.Trees.Views.HTML.Interfaces;
 using General.UI.Trees.Views.HTML.Abstracts;
-using General.UI.Trees.Views.HTML.Basic.Stylers;
-using General.UI.Trees.Views.HTML.Basic.HintsMakers;
-using General.UI.Trees.Views.HTML.Basic.DescriptionsMakers;
+
+using General.UI.Trees.Views.HTML.Basic.Interfaces;
 
 
 namespace General.UI.Trees.Views.HTML.Basic;
@@ -28,16 +28,16 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
     private const string NODE_COLLAPSED_SYMB = "+";
     private const string JS_CODE_NODE_COLLAPSE_FUNCTION_NAME = "handleNodeCollapse";
 
-    private readonly BasicTreeViewHTMLBasicDescriptionsMaker htmlTreeViewDescriptionsMaker;
-    private readonly BasicTreeViewHTMLBasicHintsMaker htmlTreeViewHintsMaker;
-    private readonly BasicTreeViewHTMLBasicStyler htmlBasicTreeViewStyler;
+    private readonly ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData> htmlTreeViewDescriptionsMaker;
+    private readonly ITreeViewHTMLHintsMaker<TreeViewModelElementsData> htmlTreeViewHintsMaker;
+    private readonly IBasicTreeViewHTMLStyler htmlBasicTreeViewStyler;
 
     public BasicTreeViewHTML
     (
         TreeViewModel<TreeViewModelElementsData> model,
-        BasicTreeViewHTMLBasicStyler htmlBasicTreeViewStyler,
-        BasicTreeViewHTMLBasicDescriptionsMaker htmlTreeViewDescriptionsMaker,
-        BasicTreeViewHTMLBasicHintsMaker htmlTreeViewHintsMaker
+        IBasicTreeViewHTMLStyler htmlBasicTreeViewStyler,
+        ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData> htmlTreeViewDescriptionsMaker,
+        ITreeViewHTMLHintsMaker<TreeViewModelElementsData> htmlTreeViewHintsMaker
     ) : base(model, htmlBasicTreeViewStyler)
     {
         this.htmlBasicTreeViewStyler = htmlBasicTreeViewStyler;

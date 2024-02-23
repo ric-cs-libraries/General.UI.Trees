@@ -1,11 +1,13 @@
 ﻿using General.UI.HTML.Basics.Elements;
 using General.UI.HTML.Basics.Attributes.Styles;
-using General.UI.Trees.Views.HTML.Basic.Abstracts;
 
+
+using General.UI.Trees.Views.HTML.Basic.Interfaces;
+using General.UI.Trees.Views.HTML.Basic.Abstracts;
 
 namespace General.UI.Trees.Views.HTML.Basic.Stylers;
 
-public class BasicTreeViewHTMLBasicStyler : BasicTreeViewHTMLStyler
+public class BasicTreeViewHTMLBasicStyler : BasicTreeViewHTMLStyler, IBasicTreeViewHTMLStyler
 {
     protected override List<HTMLStyleRule> GetStyleRules()
     {
