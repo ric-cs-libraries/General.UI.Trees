@@ -40,7 +40,7 @@ public class BasicTreeViewHTMLIntegrationTests
         ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData> treeViewHTMLDescriptionsMaker = new BasicTreeViewHTMLBasicDescriptionsMaker();
         ITreeViewHTMLHintsMaker<TreeViewModelElementsData> treeViewHTMLHintsMaker = new BasicTreeViewHTMLBasicHintsMaker();
 
-        BasicTreeViewHTML basicTreeViewHTML = new(
+        BasicTreeViewHTML<TreeViewModelElementsData> basicTreeViewHTML = new(
             treeViewModel, 
             basicTreeViewHTMLStyler, 
             treeViewHTMLDescriptionsMaker, 

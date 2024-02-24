@@ -16,7 +16,7 @@ using General.UI.Trees.Views.HTML.Basic.Interfaces;
 
 namespace General.UI.Trees.Views.HTML.Basic;
 
-public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
+public class BasicTreeViewHTML<TTreeViewModelElementsData> : TreeViewHTML<TTreeViewModelElementsData>
 {
     private const int LEAF_TEXT_MAX_LENGTH = 160;
     private const int ROOT_NODE_DESCRIPTION_TEXT_MAX_LENGTH = 180;
@@ -28,16 +28,16 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
     private const string NODE_COLLAPSED_SYMB = "+";
     private const string JS_CODE_NODE_COLLAPSE_FUNCTION_NAME = "handleNodeCollapse";
 
-    private readonly ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData> htmlTreeViewDescriptionsMaker;
-    private readonly ITreeViewHTMLHintsMaker<TreeViewModelElementsData> htmlTreeViewHintsMaker;
+    private readonly ITreeViewHTMLDescriptionsMaker<TTreeViewModelElementsData> htmlTreeViewDescriptionsMaker;
+    private readonly ITreeViewHTMLHintsMaker<TTreeViewModelElementsData> htmlTreeViewHintsMaker;
     private readonly IBasicTreeViewHTMLStyler htmlBasicTreeViewStyler;
 
     public BasicTreeViewHTML
     (
-        TreeViewModel<TreeViewModelElementsData> model,
+        TreeViewModel<TTreeViewModelElementsData> model,
         IBasicTreeViewHTMLStyler htmlBasicTreeViewStyler,
-        ITreeViewHTMLDescriptionsMaker<TreeViewModelElementsData> htmlTreeViewDescriptionsMaker,
-        ITreeViewHTMLHintsMaker<TreeViewModelElementsData> htmlTreeViewHintsMaker
+        ITreeViewHTMLDescriptionsMaker<TTreeViewModelElementsData> htmlTreeViewDescriptionsMaker,
+        ITreeViewHTMLHintsMaker<TTreeViewModelElementsData> htmlTreeViewHintsMaker
     ) : base(model, htmlBasicTreeViewStyler)
     {
         this.htmlBasicTreeViewStyler = htmlBasicTreeViewStyler;
@@ -45,7 +45,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
         this.htmlTreeViewHintsMaker = htmlTreeViewHintsMaker;
     }
 
-    protected override HTMLNodeTag GetTreeRootNodeAsHTMLNodeTag(GenericTree<TreeViewModelElementsData> treeViewModelRootNode)
+    protected override HTMLNodeTag GetTreeRootNodeAsHTMLNodeTag(GenericTree<TTreeViewModelElementsData> treeViewModelRootNode)
     {
         var rootTag = new HTMLDivTag();
         SetHint(rootTag, htmlTreeViewHintsMaker.GetHint(treeViewModelRootNode));
@@ -57,7 +57,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
         return rootTag;
     }
 
-    protected override HTMLNodeTag GetTreeNodeAsHTMLNodeTag(Node<TreeViewModelElementsData> treeViewModelNode)
+    protected override HTMLNodeTag GetTreeNodeAsHTMLNodeTag(Node<TTreeViewModelElementsData> treeViewModelNode)
     {
         var nodeTag = new HTMLDivTag();
         SetHint(nodeTag, htmlTreeViewHintsMaker.GetHint(treeViewModelNode));
@@ -69,7 +69,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
         return nodeTag;
     }
 
-    protected override HTMLNodeTag GetTreeLeafAsHTMLNodeTag(Leaf<TreeViewModelElementsData> treeViewModelLeaf)
+    protected override HTMLNodeTag GetTreeLeafAsHTMLNodeTag(Leaf<TTreeViewModelElementsData> treeViewModelLeaf)
     {
         var tag = new HTMLDivTag();
         SetHint(tag, htmlTreeViewHintsMaker.GetHint(treeViewModelLeaf));
@@ -87,7 +87,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
 
     //------------------------------------------------------------------------------------------------------------
 
-    private HTMLDivTag GetRootNodeDescriptionTag(GenericTree<TreeViewModelElementsData> treeViewModelRootNode)
+    private HTMLDivTag GetRootNodeDescriptionTag(GenericTree<TTreeViewModelElementsData> treeViewModelRootNode)
     {
         var descriptionTag = new HTMLDivTag();
         htmlBasicTreeViewStyler.StyleRootNodeDescriptionTag(descriptionTag);
@@ -107,7 +107,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
         return descriptionTag;
     }
 
-    private HTMLDivTag GetNodeDescriptionTag(Node<TreeViewModelElementsData> treeViewModelNode)
+    private HTMLDivTag GetNodeDescriptionTag(Node<TTreeViewModelElementsData> treeViewModelNode)
     {
         var descriptionTag = new HTMLDivTag();
         htmlBasicTreeViewStyler.StyleNodeDescriptionTag(descriptionTag);
@@ -127,7 +127,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
         return descriptionTag;
     }
 
-    private HTMLSpanTag GetNodeCollapseTag(Node<TreeViewModelElementsData> treeViewModelNode)
+    private HTMLSpanTag GetNodeCollapseTag(Node<TTreeViewModelElementsData> treeViewModelNode)
     {
         var nodeCollapseTag = new HTMLSpanTag();
         htmlBasicTreeViewStyler.StyleNodeCollapseTag(nodeCollapseTag);
@@ -172,7 +172,7 @@ public class BasicTreeViewHTML : TreeViewHTML<TreeViewModelElementsData>
 
     //----------------------------------------------------------------------------------------------------------------------
 
-    private string GetJsCodeForNodeDescriptionClick(Node<TreeViewModelElementsData> treeViewModelNode)
+    private string GetJsCodeForNodeDescriptionClick(Node<TTreeViewModelElementsData> treeViewModelNode)
     {
         return $"var nodeTag = window.document.getElementById('{treeViewModelNode.Id}'); window.{JS_CODE_NODE_COLLAPSE_FUNCTION_NAME}(nodeTag);";
     }
