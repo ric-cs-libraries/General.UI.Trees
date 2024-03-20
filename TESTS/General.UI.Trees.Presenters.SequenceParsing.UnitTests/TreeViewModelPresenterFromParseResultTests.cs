@@ -25,7 +25,7 @@ public class TreeViewModelPresenterFromParseResultTests
         var treeTitle = "Essai1";
         TreeViewModelPresenterFromParseResult<TreeViewModelElementsData> presenter = new(toDataConverter, treeTitle);
 
-        General.Basics.Trees.GenericTree.TreeElement<TreeViewModelElementsData> treeElement;
+        General.Basics.Trees.GenericTree.Abstracts.TreeElement<TreeViewModelElementsData> treeElement;
         General.Basics.Trees.GenericTree.GenericTree<TreeViewModelElementsData> treeRootNode;
         General.Basics.Trees.GenericTree.Node<TreeViewModelElementsData> treeNode, parentElement, parentElement2;
 
