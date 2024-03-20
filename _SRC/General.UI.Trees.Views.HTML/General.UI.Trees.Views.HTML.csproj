@@ -7,7 +7,7 @@
 		<MyPackagePatchVersion>0</MyPackagePatchVersion>
 
 		<Description><!-- Mettre ici en 1 ligne (même longue), le descriptif des nouveautés, pour cette nouvelle version du Package Nuget -->
-			Mise en générique de la classe : BasicTreeViewHTML :  BasicTreeViewHTML of TTreeViewModelElementsData
+			Le namespace de TreeElement (General.Basics.Trees) est devenu : General.Basics.Trees.GenericTree.Abstracts. Pas de montée de version ici.
 		</Description>
 
 	</PropertyGroup>
